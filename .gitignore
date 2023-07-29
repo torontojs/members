@@ -1,0 +1,17 @@
+# npm
+/node_modules
+
+# typescript output
+/dist
+
+# Directory used for running tests in CommonJS mode
+/cjs-test
+
+# vim
+.*.swp
+
+# nyc
+/.nyc_output
+
+# bun!
+/bun.lockb

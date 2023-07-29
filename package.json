@@ -1,0 +1,25 @@
+{
+  "name": "@torontojs/members",
+  "version": "0.1.0",
+  "description": "Members directory for Toronto JS",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "make start",
+    "start:watch": "tsc-watch --onSuccess 'node dist/index.js'",
+    "watch": "tsc --watch",
+    "lint": "eslint --quiet 'src/*.ts'",
+    "fix": "eslint --quiet 'src/**/*.ts' --fix",
+    "test": "make lint test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.21.0",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "tsc-watch": "^6.0.4"
+  }
+}
