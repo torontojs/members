@@ -72,6 +72,9 @@ on a case-by-case basis on pages to (ideally mostly) progressively enhance.
 We use React as a template engine on the server, but try to stick to Web APIs
 on the front, including the use of Web Components where they make sense.
 
+Initially we won't need a database as profiles are created from a JSON5 file,
+and changed via pull requests.
+
 Running the service
 -------------------
 
