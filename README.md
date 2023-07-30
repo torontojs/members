@@ -25,7 +25,7 @@ typescript, etc), links and job status:
 The aesthetic
 -------------
 
-We're going for an old school terminal/bbs vibe, similar to:
+We're going for an old school terminal/bbs vibe + whimsy, similar to:
 
 * <https://adventofcode.com/>
 * <https://int10h.org/oldschool-pc-fonts/fontlist/>
