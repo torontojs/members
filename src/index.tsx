@@ -1,11 +1,16 @@
-// Import the framework and instantiate it
 import Fastify from 'fastify'
+import * as jsxRender from './middleware/jsx-render.js';
+import * as React from 'react';
+
 const fastify = Fastify({
   logger: true
 })
 
+fastify.addHook('preSerialization', jsxRender.preSerialization);
+fastify.addHook('onSend', jsxRender.onSend);
+
 // Declare a route
-fastify.get('/', async function handler (request, reply) {
+fastify.get('/', async () => {
   return { hello: 'world' }
 })
 
@@ -24,9 +29,8 @@ fastify.route<{
       required: ['name'],
     },
   },
-  handler: async (request, reply) => {
-    reply.header('Content-Type', 'text/html');
-    return '<h1>Hi</h1>';
+  handler: async (_, reply) => {
+    return <h1>Hi</h1>;
   }
 })
 
