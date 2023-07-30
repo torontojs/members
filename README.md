@@ -13,7 +13,13 @@ location community members may make a profile page at for example:
 `https://members.torontojs.com/~jen`.
 
 These pages contains some information like a name, interests (react,
-typescript, etc), links and job status (seeking, it's complicated).
+typescript, etc), links and job status:
+
+* seeking
+* it's complicated
+* increasing shareholder value
+* standalone unit
+* airgapped (not working in tech)
 
 
 The aesthetic
@@ -57,6 +63,14 @@ A much more advanced feature might also be some intergration with the
 Fediverse/[ActivityStreams](https://www.w3.org/TR/activitystreams-core/),
 or parts of the [Indieweb](https://indieweb.org/).
 
+Tech
+----
+
+We're using fastify to render HTML server-side and only add frontend javascript
+on a case-by-case basis on pages to (ideally mostly) progressively enhance.
+
+We use React as a template engine on the server, but try to stick to Web APIs
+on the front, including the use of Web Components where they make sense.
 
 Running the service
 -------------------
