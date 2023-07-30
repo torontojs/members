@@ -3,15 +3,12 @@ import { isValidElement } from 'react';
 import { renderToString } from 'react-dom/server';
 
 /**
- * So fastify hooks are a little dumb. Once we enter the preSerialization hook it already decided the
- * response has to be JSON.
+ * The preserialization hook lets us transform the response body
+ * before it's json-encoded.
  *
- * So in the preSerialization hook we turn the React component into a string and place it in an object
- * with a ___jsx key.
- *
- * In the onSend hook we unwrap that object and send the plain HTML string
+ * We use this to turn React components into an object with a ___jsx key
+ * that has the serialized HTML.
  */
-
 export const preSerialization: preSerializationHookHandler<unknown> = async (_request, reply, payload: unknown) => {
 
   if (isValidElement(payload)) {
@@ -24,6 +21,11 @@ export const preSerialization: preSerializationHookHandler<unknown> = async (_re
   }
 
 };
+
+/**
+ * The onSendHookHandler lets us transform the response body (as a string)
+ * We detect the ___jsx key and unwrap the HTML.
+ */
 export const onSend: onSendHookHandler<unknown> = async (_request, _reply, payload: unknown) => {
 
   if (typeof payload==='string' && payload.startsWith('{"___jsx":"')) {
