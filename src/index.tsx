@@ -29,7 +29,7 @@ fastify.route<{
       required: ['name'],
     },
   },
-  handler: async (_, reply) => {
+  handler: async () => {
     return <h1>Hi</h1>;
   }
 })
