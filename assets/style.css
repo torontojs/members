@@ -1,0 +1,12 @@
+body {
+  background: black;
+  color: white;
+  font-family: noto sans mono;
+  font-size: 20px;
+}
+
+pre {
+  font-family: noto sans mono;
+  font-size: 15px;
+  line-height: 19px;
+}

@@ -1,38 +1,26 @@
 import Fastify from 'fastify'
 import * as jsxRender from './middleware/jsx-render.js';
-import * as React from 'react';
+import { routes } from './routes.js';
+import fastifyStatic from '@fastify/static';
+import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 
 const fastify = Fastify({
   logger: true
 })
 
+// These 2 hooks allow us to render React/jsx tags straight to HTML
 fastify.addHook('preSerialization', jsxRender.preSerialization);
 fastify.addHook('onSend', jsxRender.onSend);
 
-// Declare a route
-fastify.get('/', async () => {
-  return { hello: 'world' }
-})
+// Static assets
+fastify.register(fastifyStatic, {
+  root: join(fileURLToPath(import.meta.url), '../../assets'),
+  prefix: '/assets',
+});
 
-fastify.route<{
-  Params: { name : string }
-}>({
-  method: 'GET',
-  url: '/~:name',
-  schema: {
-    // request needs to have a querystring with a `name` parameter
-    params: {
-      type: 'object',
-      properties: {
-          name: { type: 'string'}
-      },
-      required: ['name'],
-    },
-  },
-  handler: async () => {
-    return <h1>Hi</h1>;
-  }
-})
+// Register routes
+routes(fastify);
 
 // Run the server!
 try {
