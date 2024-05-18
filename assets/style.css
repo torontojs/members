@@ -1,12 +1,144 @@
+* {
+  font-family: 'Noto Sans Mono', monospace;
+  --font-color: gray;
+  --foreground-color: transparent;
+  --background-color: transparent;
+}
+
 body {
-  background: black;
-  color: white;
+  background: var(--background-color);
   font-family: noto sans mono;
-  font-size: 20px;
+  color: var(--font-color);
 }
 
 pre {
-  font-family: noto sans mono;
-  font-size: 15px;
+  font-size: 10px;
   line-height: 19px;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  height: 100vh;
+}
+
+.col {
+  align-items: start;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    flex-direction: column;
+  }
+  .col{
+      width: 100vw;
+  }
+  
+}
+.box {
+  background-color: var(--foreground-color);
+  border-color: blue 5px solid;
+  height: auto;
+}
+
+.marquee {
+  width: 100%;
+  border: 1px solid red;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee span {
+  display: inline-block;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.status-wrapper {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 16px;
+  animation: z-axis-animation 1s ease-in-out 0s infinite alternate;
+}
+
+.status-wrapper:hover {
+  background-color: darken(#ddd, 10%);
+}
+
+@keyframes z-axis-animation {
+  from {
+    transform: rotateZ(180deg)
+  }
+
+  to {
+    transform: rotateZ(-180deg)
+  }
+}
+
+.status-wrapper {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 16px;
+  background-color: pink;
+}
+
+.status-wrapper:hover {
+  background-color: darken(#ddd, 10%);
+  perspective: 10px;
+  animation: z-axis-animation 1s ease-in 0s infinite alternate;
+}
+
+@keyframes z-axis-animation {
+  from {
+    transform: rotate3d(0, 1, 0, 0deg)
+  }
+
+  to {
+    transform: rotate3d(1, 0, 0, 360deg);
+  }
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.image-gallery>li {
+  flex-basis: 350px;
+  /* width: 350px; */
+}
+
+.image-gallery li img {
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border-radius: 5px;
 }
