@@ -1,32 +1,38 @@
 import * as React from 'react';
+import { MemberProps } from '../templates/member-profile.js';
 
-type Props = {
+type MainProps = {
+  name: string;
+  member: MemberProps[];
   children: JSX.Element;
 }
 
-export function MainLayout(props: Props) {
+export function MainLayout(props: MainProps) {
 
-  const avatar = `
-+----------+
-|  ___   o |
-| /_|_\\    |
-|~~~|~~~~~~|
-|~~~|~~~~~~|
-|   | \\__  |
-+----------+
-`;
+  return (
+    <html>
+      <head>
+        <title> Members of TorontoJS </title>
+        <link href="/assets/style.css" rel="stylesheet" type="text/css" />
+      </head>
+      <body>
+        <figure role="img" aria-label="ASCII art of a beach scene">
+          <pre>
+            {`
+          +----------+
+          |  ___   o |
+          | /_|_\\    |
+          |~~~|~~~~~~|
+          |~~~|~~~~~~|
+          |   | \\__  |
+          +----------+
+          `}
+          </pre>
+          {props.children}
+        </figure>
 
-  return <html>
-    <head>
-      <title>Evert</title>
-      <link href="/assets/style.css" rel="stylesheet" type="text/css" />
-    </head>
-    <body>
-      <figure role="img" aria-label="ASCII art of a beach scene">
-        <pre>{avatar.trim()}</pre>
-        {props.children}
-      </figure>
-    </body>
-  </html>;
+        {/** TODO: list member profiles */}
+      </body>
+    </html>);
 
 }
