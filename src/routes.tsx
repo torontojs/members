@@ -1,3 +1,5 @@
+import { readFile, readdir } from 'fs/promises';
+
 import { FastifyInstance } from 'fastify';
 import * as React from 'react';
 import { MainLayout } from './layout/main.js';
@@ -52,4 +54,17 @@ export function routes(fastify: FastifyInstance) {
     return <MemberProfile {...props} />
 
   })
+
+  fastify.get('/webring', async (_, res) => {
+    const webComponentScript = await readFile('src/components/webring.js', { encoding: 'utf8' });
+    const usersFiles = Promise.all((await readdir('members')).map((file) => readFile(file, { encoding: 'utf8' })));
+
+    res.header('Content-Type', 'application/javascript');
+
+    return res.send(`
+      const users = [${(await usersFiles).join(',\n')}];
+
+      ${webComponentScript}
+    `);
+  });
 }
