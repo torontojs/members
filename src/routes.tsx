@@ -42,15 +42,14 @@ export function routes(fastify: FastifyInstance) {
       name: string
     },
     Body: MemberProps
-  }>('/~:name', (request) => {
+  }>('/~:name', async (request) => {
     const { name } = request.params;
 
-    fallbackProps = {
-      ...fallbackProps,
-      name: name
-    }
+    const userFile = await readFile(`members/${name}.json`, { encoding: 'utf8' });
+    const userJSON = JSON.parse(userFile);
+    const props = {...fallbackProps, ...userJSON};
 
-    return <MemberProfile {...fallbackProps} />
+    return <MemberProfile {...props} />
 
   })
 }
