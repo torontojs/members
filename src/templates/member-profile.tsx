@@ -10,12 +10,12 @@ export type MemberProps = {
   name: string;
   pronouns?: 'he' | 'she' | 'they' | string;
   /** years of experience */
-  yoe?: number;
+  years_of_experience?: number;
   /** url for gravatar or profile pic */
   avatar?: string;
   bio?: string;
   website?: string;
-  githubHandle?: string;
+  github_handle?: string;
   status?: string;
   interests?: string[];
   music?: string[];
@@ -26,8 +26,8 @@ export type MemberProps = {
 }
 
 export function MemberProfile(props: MemberProps) {
-  const { name, pronouns, yoe, avatar, bio, website, githubHandle, status, interests, music, heroes, books, friends } = props;
-  const githubUrl = `https://github.com/${githubHandle}`;
+  const { name, pronouns, years_of_experience, avatar, bio, website, github_handle, status, interests, music, heroes, books, friends } = props;
+  const githubUrl = `https://github.com/${github_handle}`;
 
   return (
     <>
@@ -46,7 +46,7 @@ export function MemberProfile(props: MemberProps) {
 
                 <p>{pronouns ?? `Pronouns unknown`}</p>
 
-                {yoe && <p>{yoe} Years of Experience</p>}
+                {years_of_experience && <p>{years_of_experience} Years of Experience</p>}
 
                 <img src={avatar ?? `https://placehold.co/200x200`} alt={name} />
 

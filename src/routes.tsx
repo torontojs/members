@@ -10,7 +10,7 @@ export function routes(fastify: FastifyInstance) {
   let fallbackProps = {
     name: 'Member Name',
     pronouns: 'Pronouns unknown',
-    yoe: 100,
+    years_of_experience: 100,
     avatar: 'https://placehold.co/200x200',
     bio: `Hey everyone! Welcome to my little corner of the cyberverse! I'm happyfeet, but you can call me hap! I'm a dreamer, a music lover, and a bit of a tech geek. When I'm not exploring the digital cosmos, you can probably find me lost in a book or jamming out to some tunes. I believe in spreading positivity and good vibes wherever I go, so feel free to drop by and say hi!`,
     website: 'https://example.com',
@@ -20,7 +20,7 @@ export function routes(fastify: FastifyInstance) {
     movies: ['The Matrix', 'Blade Runner', 'Inception', 'Interstellar', '2001: A Space Odyssey'],
     heroes: ['Alan Turing', 'Grace Hopper', 'Ada Lovelace', 'Nikola Tesla', 'Marie Curie'],
     books: ['Neuromancer', 'Dune', 'The Hitchhiker\'s Guide to the Galaxy', 'The Foundation Trilogy', 'Do Androids Dream of Electric Sheep?'],
-    githubHandle: 'happyfeet',
+    github_handle: 'happyfeet',
     friends: [
       {
         name: 'Friend 1',

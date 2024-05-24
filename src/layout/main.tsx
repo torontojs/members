@@ -32,7 +32,7 @@ export function MainLayout(props: MainProps) {
         </figure>
 
         {/** TODO: list member profiles */}
-        <script src='/webring' type="module"></script>
+        <script async src='/webring' type="module"></script>
       </body>
     </html>);
 
