@@ -15,7 +15,8 @@
     },
     "website": {
       "type": "string",
-      "description": "Website of the TJS Member"
+      "description": "Website of the TJS Member",
+      "format": "uri"
     },
     "avatar": {
       "type": "string",
