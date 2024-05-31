@@ -19,7 +19,6 @@ pre {
 .container{
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 16px;
   height: 100vh;
 }
@@ -27,6 +26,8 @@ pre {
 .col {
   align-items: start;
   flex-direction: column;
+  min-width: 300px;
+  padding: 1em;
 }
 
 @media screen and (max-width: 767px) {
