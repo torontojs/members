@@ -1,0 +1,55 @@
+{
+    "$schema": "./user-schema.json",
+    "name": "Evert Pot",
+    "pronouns": "he/him",
+    "avatar": "https://s.gravatar.com/avatar/9e9b4f80c65dc6076d74cd421084e4fc?s=200",
+    "website": "https://evertpot.com/",
+    "interests": [
+    "HATEOAS",
+    "htmx"
+    ],
+    "github_handle": "evertpot",
+    "friends": [
+        {
+            "name": "Marco",
+            "alt": "A picture of Marco with a smile looking at the camera. He's wearing aviator glasses, a fake fur winter hat and an orange scarf.",
+            "image": "https://madcampos.dev/_astro/me.CmH9FT94_Z2luSS7.webp",
+            "website": "https://dog.ceo/"
+        },
+        {
+            "name": "Baby Shark",
+            "alt": "Baby Shark",
+            "image": "https://media1.autourdugateau.fr/13090-large_default/baby-shark-xl-balloon.jpg",
+            "website": "https://dog.ceo/"
+        },
+        {
+            "name": "Sami",
+            "alt": "image of Sami against sunset",
+            "image": "https://media.licdn.com/dms/image/C5603AQEQZc-LsN2aaw/profile-displayphoto-shrink_800_800/0/1637865662424?e=1722470400&v=beta&t=FCtP0vabmUyBA19k_hnL9tjDBtiMc76UTXmFupwy67g",
+            "website": "https://linkedin.com/in/sami-xie-tix980"
+        },
+        {
+            "name": "Jen",
+            "alt": "Jen Chan",
+            "image": "https://placehold.co/100x100",
+            "website": "https://jenchan.biz"
+        },
+        {
+            "name": "Wolever",
+            "alt": "David Wolever",
+            "image": "https://avatars.githubusercontent.com/u/59575?v=4",
+            "website": "https://wolever.net/"
+        },
+        {
+            "name": "Dale",
+            "alt": "pixel art profile of Dale Karp",
+            "image": "https://dale.io/static/images/logo.png",
+            "website": "https://dale.io/"
+        },
+        {
+            "name": "Friend 8",
+            "alt": "Friend 4",
+            "image": "https://placehold.co/100x100"
+        }
+    ]
+}

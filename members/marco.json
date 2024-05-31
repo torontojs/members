@@ -1,0 +1,62 @@
+{
+    "$schema": "./user-schema.json",
+    "name": "Marco Campos",
+    "pronouns": "he/him",
+    "years_of_experience": 100,
+    "avatar": "https://madcampos.dev/_astro/me.CmH9FT94_Z2luSS7.webp",
+    "bio": "Hi there! My name is Marco Campos (@madcampos on most social networks) and my pronouns are he/him! I'm a Senior Web Developer based in Toronto, Canada. I have experience with both frontend and backend development, with focus on responsive and accessible design, typescript and node.js.",
+    "website": "https://madcampos.dev",
+    "status": "I like to see the trees before the forest.",
+    "interests": [
+        "Rock music 🎵",
+        "Science Fiction",
+        "Fireball",
+        "Boardgames"
+    ],
+    "books": [
+        "Neuromancer",
+        "Dune",
+        "The Hitchhiker's Guide to the Galaxy",
+        "The Foundation Trilogy",
+        "Do Androids Dream of Electric Sheep?"
+    ],
+    "github_handle": "madcampos",
+    "friends": [
+        {
+            "name": "Evert",
+            "alt": "Evert Pot holding a plastic plant toy",
+            "image": "https://s.gravatar.com/avatar/9e9b4f80c65dc6076d74cd421084e4fc?s=200",
+            "website": "https://evertpot.com/"
+        },
+        {
+            "name": "Sami",
+            "alt": "Sami",
+            "image": "https://media.licdn.com/dms/image/C5603AQEQZc-LsN2aaw/profile-displayphoto-shrink_800_800/0/1637865662424?e=1722470400&v=beta&t=FCtP0vabmUyBA19k_hnL9tjDBtiMc76UTXmFupwy67g",
+            "website": "https://linkedin.com/in/sami-xie-tix980"
+        },
+        {
+            "name": "Liz",
+            "alt": "Liz McCready",
+            "image": "https://gingerkiwi.dev/_astro/avatar.b217b8b1_ZolSn8.webp",
+            "website": "https://gingerkiwi.dev/"
+        },
+        {
+            "name": "Wolever",
+            "alt": "David Wolever",
+            "image": "https://avatars.githubusercontent.com/u/59575?v=4",
+            "website": "https://wolever.net/"
+        },
+        {
+            "name": "Jen",
+            "alt": "Jen Chan",
+            "image": "https://placehold.co/100x100",
+            "website": "https://jenchan.biz"
+        },
+        {
+            "name": "Dale",
+            "alt": "pixel art profile of Dale Karp",
+            "image": "https://dale.io/static/images/logo.png",
+            "website": "https://dale.io/"
+        }
+    ]
+}
