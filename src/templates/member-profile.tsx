@@ -5,6 +5,7 @@ type Friend = {
   name: string;
   alt: string;
   image: string;
+  website: string;
 }
 export type MemberProps = {
   name: string;
@@ -48,7 +49,7 @@ export function MemberProfile(props: MemberProps) {
 
                 {years_of_experience && <p>{years_of_experience} Years of Experience</p>}
 
-                <img src={avatar ?? `https://placehold.co/200x200`} alt={name} />
+                <img src={avatar ?? `https://placehold.co/200x200`} alt={name} width="300" />
 
                 {bio && <p>{bio}</p>}
 
@@ -62,19 +63,19 @@ export function MemberProfile(props: MemberProps) {
                 <table>
                   <tr>
                     <th>General</th>
-                    <td>{interests?.map(interest => <span key={interest}>{interest}</span>)}</td>
+                    <td>{interests?.map(interest => <span key={interest}>{interest}, </span>)}</td>
                   </tr>
                   <tr>
                     <th>Music</th>
-                    <td>{music?.map(interest => <span key={interest}>{interest}</span>)}</td>
+                    <td>{music?.map(interest => <span key={interest}>{interest}, </span>)}</td>
                   </tr>
                   <tr>
                     <th>Heros</th>
-                    <td>{heroes?.map(interest => <span key={interest}>{interest}</span>)}</td>
+                    <td>{heroes?.map(interest => <span key={interest}>{interest}, </span>)}</td>
                   </tr>
                   <tr>
                     <th>Books</th>
-                    <td>{books?.map(interest => <span key={interest}>{interest}</span>)}</td>
+                    <td>{books?.map(interest => <span key={interest}>{interest}, </span>)}</td>
                   </tr>
                 </table>
               </div>
@@ -92,12 +93,13 @@ export function MemberProfile(props: MemberProps) {
               </div>
               <div>
                 <div className='box'>
-                  <h2>{name}'s Friends (Top 8)</h2>
+                  <h2>{name}'s Friends</h2>
                   <div className='image-gallery'>
-                    {friends?.map(friend =>
-                      <div className="image">
-                        <img src={friend.image ?? `https://placehold.co/50x50`} alt={friend.alt} />
-                        <span>{friend.name}</span>
+                    {friends?.map((friend, index) =>
+                      <div className="image" key={`friend-` + index}>
+                        <a href={friend.website} target="_blank" rel="noreferrer">
+                          <img src={friend.image ?? `https://placehold.co/50x50`} alt={friend.alt} width="200" />
+                          <p>{friend.name}</p></a>
                       </div>)}
                   </div>
                 </div>
