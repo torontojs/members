@@ -16,11 +16,13 @@
     "website": {
       "type": "string",
       "description": "Website of the TJS Member",
-      "format": "uri"
+      "$ref": "#/definitions/httpUrl"
     },
     "avatar": {
       "type": "string",
-      "description": "Avatar of the user"
+      "format": "uri",
+      "description": "Avatar of the user",
+      "$ref": "#/definitions/httpUrl"
     },
     "github_handle": {
       "type": "string"
@@ -76,11 +78,18 @@
           },
           "website": {
             "type": "string",
-            "description": "URL for portfolio of a friend"
+            "description": "URL for portfolio of a friend",
+            "$ref": "#/definitions/httpUrl"
           }
         }
       }
     }
-    },
+  },
+  "definitions": {
+    "httpUrl": {
+      "format": "uri",
+      "pattern": "^https?://"
+    }
+  },
   "required": ["name", "website", "avatar", "github_handle", "friends"]
 }
