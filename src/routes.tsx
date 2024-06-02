@@ -1,6 +1,5 @@
-import { readFile, readdir } from 'fs/promises';
-
 import { FastifyInstance } from 'fastify';
+import { readFile, readdir } from 'fs/promises';
 import * as React from 'react';
 import { MainLayout } from './layout/main.js';
 import { MemberProfile, MemberProps } from './templates/member-profile.js';
@@ -49,22 +48,52 @@ export function routes(fastify: FastifyInstance) {
 
     const userFile = await readFile(`members/${name}.json`, { encoding: 'utf8' });
     const userJSON = JSON.parse(userFile);
-    const props = {...fallbackProps, ...userJSON};
+    const props = { ...fallbackProps, ...userJSON };
 
     return <MemberProfile {...props} />
-
   })
+
+
+
+  fastify.get('/members', async (_, res) => {
+
+    const getValidMemberFiles = (files: string[]) => {
+      return files.filter((file: string) =>
+        !['user-schema.json', 'template.json'].includes(file))
+    }
+
+    const createMemberList = (validFiles: string[]) => {
+
+      const readMemberFiles = validFiles.map((filename) =>
+        readFile(`members/${filename}`, 'utf-8')
+          .then(file => JSON.parse(file))
+          .then((member => {
+            return {
+              name: member.name,
+              website: member.website
+            }
+          })).catch((err: Error) => {
+            console.error(err)
+          })
+      )
+      return Promise.all(readMemberFiles)
+    }
+
+    const files = await Promise.all(await readdir('members'))
+
+    const validFiles = getValidMemberFiles(files)
+
+    res.header('Content-Type', 'application/json');
+
+    await createMemberList(validFiles).then(memberList => res.send(memberList))
+  })
+
 
   fastify.get('/webring', async (_, res) => {
     const webComponentScript = await readFile('src/components/webring.js', { encoding: 'utf8' });
-    const usersFiles = Promise.all((await readdir('members')).map((file) => readFile(file, { encoding: 'utf8' })));
 
     res.header('Content-Type', 'application/javascript');
 
-    return res.send(`
-      const users = [${(await usersFiles).join(',\n')}];
-
-      ${webComponentScript}
-    `);
+    return res.send(`${webComponentScript}`);
   });
 }
