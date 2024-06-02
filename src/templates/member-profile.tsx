@@ -22,12 +22,16 @@ export type MemberProps = {
   music?: string[];
   heroes?: string[];
   books?: string[];
-  children?: JSX.Element;
   friends: Friend[];
 }
 
-export function MemberProfile(props: MemberProps) {
-  const { name, pronouns, years_of_experience, avatar, bio, website, github_handle, status, interests, music, heroes, books, friends } = props;
+type MemberProfileProps = MemberProps & {
+  children?: JSX.Element;
+  marqueeText: string;
+}
+
+export function MemberProfile(props: MemberProfileProps) {
+  const { name, pronouns, years_of_experience, avatar, bio, website, github_handle, status, interests, music, heroes, books, friends, marqueeText } = props;
   const githubUrl = `https://github.com/${github_handle}`;
 
   return (
@@ -82,9 +86,10 @@ export function MemberProfile(props: MemberProps) {
             </div>
             <div className='col'>
 
-              <div className='box'>
-                <Marquee>Looking for work! Hurry now! Gonna be off the market soon! Selling like hotcakes!</Marquee>
-              </div>
+
+              {marqueeText && <div className='box'>
+                <Marquee>{marqueeText}</Marquee>
+              </div>}
 
               <div className='box'>
 
