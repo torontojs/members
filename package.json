@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "make start",
-    "start:watch": "tsc-watch --onSuccess 'node dist/index.js'",
+    "start:watch": "tsc && tsc-watch --onSuccess 'node dist/index.js'",
     "watch": "tsc --watch",
     "lint": "eslint --quiet 'src/*.ts'",
     "fix": "eslint --quiet 'src/**/*.ts' --fix",

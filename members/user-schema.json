@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft-04/schema",
+  "$id": "https://github.com/torontojs/members/tree/main/members/user-schema.json",
+  "title": "Members of TorontoJS",
+  "description": "TorontoJS Members",
+  "type": "object",
+  "properties": {
+   "name": {
+      "type": "string",
+        "description": "Name of the user. Full name or internet handle, however you like."
+    },
+    "pronouns": {
+      "type": "string",
+      "description": "Pronouns of the user"
+    },
+    "website": {
+      "type": "string",
+      "description": "Website of the TJS Member",
+      "$ref": "#/definitions/httpUrl"
+    },
+    "avatar": {
+      "type": "string",
+      "format": "uri",
+      "description": "Avatar of the user",
+      "$ref": "#/definitions/httpUrl"
+    },
+    "github_handle": {
+      "type": "string"
+    },
+    "years_of_experience": {
+      "type": "integer",
+      "description": "Years of experience writing production code",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "interests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of interests. Include your hobbies, pasttimes, and anything else you're passionate about."
+    },
+    "books": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of favorite books."
+    },
+    "heros": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of people you admire or find to be role models."
+    },
+    "bio": {
+      "type": "string",
+      "description": "Bio of the user"
+    },
+    "friends": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the friend"
+          },
+          "image": {
+            "type": "string",
+            "description": "Image of the friend"
+          },
+          "alt": {
+            "type": "string",
+            "description": "Alt text for the image"
+          },
+          "website": {
+            "type": "string",
+            "description": "URL for portfolio of a friend",
+            "$ref": "#/definitions/httpUrl"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "httpUrl": {
+      "format": "uri",
+      "pattern": "^https?://"
+    }
+  },
+  "required": ["name", "website", "avatar", "github_handle", "friends"]
+}

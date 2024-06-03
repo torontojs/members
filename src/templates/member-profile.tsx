@@ -5,29 +5,34 @@ type Friend = {
   name: string;
   alt: string;
   image: string;
+  website: string;
 }
 export type MemberProps = {
   name: string;
   pronouns?: 'he' | 'she' | 'they' | string;
   /** years of experience */
-  yoe?: number;
+  years_of_experience?: number;
   /** url for gravatar or profile pic */
   avatar?: string;
   bio?: string;
   website?: string;
-  githubHandle?: string;
+  github_handle?: string;
   status?: string;
   interests?: string[];
   music?: string[];
   heroes?: string[];
   books?: string[];
-  children?: JSX.Element;
   friends: Friend[];
 }
 
-export function MemberProfile(props: MemberProps) {
-  const { name, pronouns, yoe, avatar, bio, website, githubHandle, status, interests, music, heroes, books, friends } = props;
-  const githubUrl = `https://github.com/${githubHandle}`;
+type MemberProfileProps = MemberProps & {
+  children?: JSX.Element;
+  marqueeText: string;
+}
+
+export function MemberProfile(props: MemberProfileProps) {
+  const { name, pronouns, years_of_experience, avatar, bio, website, github_handle, status, interests, music, heroes, books, friends, marqueeText } = props;
+  const githubUrl = `https://github.com/${github_handle}`;
 
   return (
     <>
@@ -46,9 +51,9 @@ export function MemberProfile(props: MemberProps) {
 
                 <p>{pronouns ?? `Pronouns unknown`}</p>
 
-                {yoe && <p>{yoe} Years of Experience</p>}
+                {years_of_experience && <p>{years_of_experience} Years of Experience</p>}
 
-                <img src={avatar ?? `https://placehold.co/200x200`} alt={name} />
+                <img src={avatar ?? `https://placehold.co/200x200`} alt={name} width="300" />
 
                 {bio && <p>{bio}</p>}
 
@@ -62,28 +67,29 @@ export function MemberProfile(props: MemberProps) {
                 <table>
                   <tr>
                     <th>General</th>
-                    <td>{interests?.map(interest => <span key={interest}>{interest}</span>)}</td>
+                    <td>{interests?.map(interest => <span key={interest}>{interest}, </span>)}</td>
                   </tr>
                   <tr>
                     <th>Music</th>
-                    <td>{music?.map(interest => <span key={interest}>{interest}</span>)}</td>
+                    <td>{music?.map(interest => <span key={interest}>{interest}, </span>)}</td>
                   </tr>
                   <tr>
                     <th>Heros</th>
-                    <td>{heroes?.map(interest => <span key={interest}>{interest}</span>)}</td>
+                    <td>{heroes?.map(interest => <span key={interest}>{interest}, </span>)}</td>
                   </tr>
                   <tr>
                     <th>Books</th>
-                    <td>{books?.map(interest => <span key={interest}>{interest}</span>)}</td>
+                    <td>{books?.map(interest => <span key={interest}>{interest}, </span>)}</td>
                   </tr>
                 </table>
               </div>
             </div>
             <div className='col'>
 
-              <div className='box'>
-                <Marquee>Looking for work! Hurry now! Gonna be off the market soon! Selling like hotcakes!</Marquee>
-              </div>
+
+              {marqueeText && <div className='box'>
+                <Marquee>{marqueeText}</Marquee>
+              </div>}
 
               <div className='box'>
 
@@ -92,12 +98,13 @@ export function MemberProfile(props: MemberProps) {
               </div>
               <div>
                 <div className='box'>
-                  <h2>{name}'s Friends (Top 8)</h2>
+                  <h2>{name}'s Friends</h2>
                   <div className='image-gallery'>
-                    {friends?.map(friend =>
-                      <div className="image">
-                        <img src={friend.image ?? `https://placehold.co/50x50`} alt={friend.alt} />
-                        <span>{friend.name}</span>
+                    {friends?.map((friend, index) =>
+                      <div className="image" key={`friend-` + index}>
+                        <a href={friend.website} target="_blank" rel="noreferrer">
+                          <img src={friend.image ?? `https://placehold.co/50x50`} alt={friend.alt} width="200" />
+                          <p>{friend.name}</p></a>
                       </div>)}
                   </div>
                 </div>
